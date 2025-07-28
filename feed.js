@@ -61,6 +61,10 @@ body{
   background-color: white;
   font-family: "proxima-nova";
 }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 .dancing-script-font {
   font-family: "Dancing Script", cursive;
   color: var(--pink);
@@ -222,6 +226,12 @@ body{
 
 .article-img{
   padding: 5px 11px 5px;
+}
+
+.article-img img {
+    width: 355px;
+    height: 355px;
+    object-fit: cover;
 }
 
 .article-grid{
@@ -413,7 +423,7 @@ footer p{
       <div class="category"> ${Array.isArray(featureItem.category) ? featureItem.category[0] : featureItem.category || 'NEWS'}</div>
       <b>${featureItem.title}</b>
       ${featureItem.description}
-      <div class="read-more">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</div>
+      <div class="read-more"><a href="${featureItem.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
     </div>
   </div>
 
@@ -425,13 +435,14 @@ footer p{
           <div class="numbering">0${index + 1}</div>
           <div class="article-title">${item.title}</div>
           <div class="article-excerpt">${item.description || ''}</div>
-          <div class="read-more">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</div>
+          <div class="read-more"><a href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
           <div class="flex-news-img">
             <img src="${getImageFromItem(item)}">
           </div>
         </div>
       `)
       .join('')}
+      </div>
 
       ${gridItems
         .map(item =>`
@@ -444,41 +455,13 @@ footer p{
                     <div class="article-title">${item.title}</div>
                     <div class="article-excerpt">
                     ${item.description || ''}
-                    <div class="read-more">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</div>
+                    <div class="read-more"><a href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
                     </div>
                 </div>
             </div>
         `)
           .join('')}
-   <div class="article article-grid">
-    <div class="article-img">
-        <img src="Mask Group 59.png">
-    </div>
-    <div class="secondary-content">
-        <div class="category">NEWS</div>
-        <div class="article-title">Χείμαρρος στο μακροσκελές κείμενο του</div>
-        <div class="article-excerpt">
-        Άρης Καβατζίκης: «Έφυγα εξαιτίας του, είναι πολύ τοξικός…»
-        <div class="read-more">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</div>
-        </div>
-    </div>
-    </div>
-
-    <div class="article article-grid">
-    <div class="secondary-content">  
-        <div class="category">NEWS</div>
-        <div class="article-title">Χείμαρρος στο μακροσκελές κείμενο του</div>
-        <div class="article-excerpt">
-            Είχαν συνεργαστεί πριν από πέντε χρόνια, στην πρωινή εκπομπή του δημοσιογράφου, η οποία προβαλλόταν στον ίδιο σταθμό, αλλά, ο πρώτος αποχώρησε ξαφνικά...
-            <div class="read-more">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</div>
-        </div>
-        </div>
-    <div class="article-img">
-        <img src="Mask Group 59.png">
-    </div>
-    </div>
-
-      <div class=" category-hub flex-container">
+    <div class=" category-hub flex-container">
    <div class="category-block">
       <div class="category-container">
         <div class="hypatia-sans-font">TOP STORIES</div>
@@ -490,7 +473,7 @@ footer p{
           <img src="news icons2.png">
           <img src="news icons3.png">
         </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
+        <button><a href="https://www.youweekly.gr/articles-timeline" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
     </div>
 
@@ -503,7 +486,7 @@ footer p{
           <img src="fashion icons-2.png">
           <img src="fashion icons-3.png">
         </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
+        <button><a href="https://www.youweekly.gr/fashion" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
     </div>
 
@@ -518,7 +501,7 @@ footer p{
           <img src="beauty icons2.png">
           <img src="beauty icons3.png">
         </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
+        <button><a href="https://www.youweekly.gr/beauty" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a>/button>
       </div>
     </div>
 
@@ -531,7 +514,7 @@ footer p{
           <img src="family icons2.png">
           <img src="family icons3.png">
         </div>
-        <button >ΠΕΡΙΣΣΟΤΕΡΑ</button>
+        <button ><a href="https://www.youweekly.gr/family" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
     </div>
   </div>
