@@ -29,7 +29,28 @@ async function parseXML(xmlString) {
 
 // Helper: Get media image URL
 function getImageFromItem(item) {
+  
+  if (Array.isArray(item.content)) {
+    const mediumContentArray = item.content; // assuming `item.content` is your array
+
+    const imageObj = mediumContentArray.find(obj => obj.medium === 'image');
+    const imageUrl = imageObj?.url || null;
+
+
+    console.log('The image is' + imageUrl);
+
+    return imageUrl;
+  }
+  
+  
   return item.content?.url || 'fallback.jpg';
+}
+
+function getDescription(item) {
+  // const rawDescription = item.description?._.trim() || '';
+  const shortDescription = item.description.split(/\s+/).slice(0, 8).join(' ');
+
+  return shortDescription;
 }
 
 async function generateHTML(items) {
@@ -61,10 +82,13 @@ body{
   background-color: white;
   font-family: "proxima-nova";
 }
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.category-container a {
+  color: #000;
+}
 .dancing-script-font {
   font-family: "Dancing Script", cursive;
   color: var(--pink);
@@ -81,6 +105,7 @@ body{
   width: 100%;
 }
 
+
 .flex-background::before {
   content: "";
   position: absolute;
@@ -93,6 +118,12 @@ body{
 .image-container{
   position: relative;
   max-width: 600px;
+}
+
+
+.feature-article .image-container img {
+  max-width: 600px;
+  height: auto;
 }
 
 .img-text-container{
@@ -286,22 +317,22 @@ body{
 }
 
 .category-block:nth-child(1){
-  background-image: url(yellowStories.png);
+  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/yellowStories.png');
   background-size: cover;
 }
 
 .category-block:nth-child(2){
-  background-image: url(purpleFashion.png);
+  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/purpleFashion.png');
   background-size: cover;
 }
 
 .category-block:nth-child(3){
-  background-image: url(pinkBeauty.png);
+  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/pinkBeauty.png');
   background-size: cover;
 }
 
 .category-block:nth-child(4){
-  background-image: url(greenFamily.png);
+  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/greenFamily.png');
   background-size: cover;
 }
 footer{
@@ -334,6 +365,10 @@ footer p{
 
  .flex-container-item{
   width: 300px;
+ }
+
+ .flex-background::before {
+  width: 100%;
  }
 
  .flex-container .article-excerpt{
@@ -411,6 +446,11 @@ footer p{
   height: 100%;
  }
 }
+@media only screen and (max-width: 360px) {
+  .content-container, .article, .feature-article-excerpt {
+    padding: 9px 5px;
+  }
+}
 </style>
       </head>
       <body>
@@ -454,7 +494,7 @@ footer p{
                     <div class="category"> ${Array.isArray(item.category) ? item.category[0] : item.category || 'NEWS'}</div>
                     <div class="article-title">${item.title}</div>
                     <div class="article-excerpt">
-                    ${item.description || ''}
+                    ${getDescription(item)}
                     <div class="read-more"><a href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
                     </div>
                 </div>
@@ -469,9 +509,9 @@ footer p{
           all about news
         </div>
         <div class="category-hub-img">
-          <img src="news icons1.png">
-          <img src="news icons2.png">
-          <img src="news icons3.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons1.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons2.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons3.png">
         </div>
         <button><a href="https://www.youweekly.gr/articles-timeline" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
@@ -482,9 +522,9 @@ footer p{
         <div class="hypatia-sans-font">ΜΟΔΑ</div>
         <div class="dancing-script-font">all about fashion</div>
         <div class="category-hub-img">
-          <img src="fashion icons-1.png">
-          <img src="fashion icons-2.png">
-          <img src="fashion icons-3.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-1.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-2.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-3.png">
         </div>
         <button><a href="https://www.youweekly.gr/fashion" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
@@ -497,11 +537,11 @@ footer p{
           all about beauty
         </div>
         <div class="category-hub-img">
-          <img src="beauty icons1.png">
-          <img src="beauty icons2.png">
-          <img src="beauty icons3.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons1.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons2.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons3.png">
         </div>
-        <button><a href="https://www.youweekly.gr/beauty" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a>/button>
+        <button><a href="https://www.youweekly.gr/beauty" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
     </div>
 
@@ -510,9 +550,9 @@ footer p{
         <div class="hypatia-sans-font">ΟΙΚΟΓΕΝΕΙΑ</div>
         <div class="dancing-script-font">all about family</div>
         <div class="category-hub-img">
-          <img src="family icons1.png">
-          <img src="family icons2.png">
-          <img src="family icons3.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons1.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons2.png">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons3.png">
         </div>
         <button ><a href="https://www.youweekly.gr/family" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
       </div>
@@ -521,7 +561,6 @@ footer p{
   <footer>
     <p>YOUWEEKLY</p>
   </footer>
-  </div>
 </body>
 </html>
   `;
@@ -533,8 +572,12 @@ footer p{
   const parsed = await parseXML(xml);
   const items = parsed.rss.channel.item;
 
-  const htmlContent = await generateHTML(items);
+    // console.log(items);
+    const util = require('util');
+    console.log(util.inspect(items[49].content, { depth: null, colors: true }));
+   
 
+  const htmlContent = await generateHTML(items);
   // Optional: Save the generated HTML to a file
   fs.writeFileSync('feed.html', htmlContent, 'utf8');
 
