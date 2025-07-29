@@ -3,7 +3,7 @@ const fs = require('fs');
 const https = require('https');
 const xml2js = require('xml2js');
 
-const FEED_URL = 'https://www.youweekly.gr/feed'; // Replace with your actual XML feed URL
+const FEED_URL = 'https://www.youweekly.gr/feed';
 
 async function fetchXMLFeed(url) {
   return new Promise((resolve, reject) => {
@@ -31,7 +31,7 @@ async function parseXML(xmlString) {
 function getImageFromItem(item) {
   
   if (Array.isArray(item.content)) {
-    const mediumContentArray = item.content; // assuming `item.content` is your array
+    const mediumContentArray = item.content;
 
     const imageObj = mediumContentArray.find(obj => obj.medium === 'image');
     const imageUrl = imageObj?.url || null;
@@ -61,8 +61,7 @@ async function generateHTML(items) {
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://use.typekit.net/swn5wpk.css" as="style">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +88,9 @@ a {
 .category-container a {
   color: #000;
 }
+.header-container{
+  height: 100%;
+}
 .dancing-script-font {
   font-family: "Dancing Script", cursive;
   color: var(--pink);
@@ -104,8 +106,6 @@ a {
   position: relative;
   width: 100%;
 }
-
-
 .flex-background::before {
   content: "";
   position: absolute;
@@ -114,18 +114,14 @@ a {
   width: 550px;
   background-color: var(--red);
 }
-
 .image-container{
   position: relative;
   max-width: 600px;
 }
-
-
 .feature-article .image-container img {
   max-width: 600px;
   height: auto;
 }
-
 .img-text-container{
   font-weight: 800;
   position:absolute;
@@ -383,6 +379,9 @@ align-items: center;
   margin-right: 15px;
 }
 @media screen and (max-width: 430px){
+.header-container img{
+  width: 100vw;
+} 
  .img-text-container{
   left: 60px;
  }
@@ -396,6 +395,11 @@ align-items: center;
   justify-content: center;
  }
 
+ .flex-container .read-more {
+  width: 234px;
+  height: 40px;
+  font-size: 16px;
+}
  .flex-container-item{
   width: 300px;
  }
@@ -483,10 +487,18 @@ align-items: center;
   .content-container, .article, .feature-article-excerpt {
     padding: 9px 5px;
   }
+  .footer-social-icons span{
+    font-size: 9px;
+  }
 }
 </style>
       </head>
       <body>
+        <header>
+          <div class="header-container">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/always-on-top.png">
+          </div>
+        </header>
         <div class="feature-article">
             <div class="image-container">
                 <img src="${getImageFromItem(featureItem)}" alt="img">
