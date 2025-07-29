@@ -306,6 +306,9 @@ a {
   width: 120px;
   height: 120px;
 }
+.category-block a{
+  color: black;
+}
 
 .category-block button{
   height: 20px;
@@ -348,6 +351,7 @@ footer p{
 .flex-news-img img {
     width: 160px;
     height: 160px;
+    object-fit: cover;
 }
 @media screen and (max-width: 430px){
  .img-text-container{
@@ -503,6 +507,7 @@ footer p{
           .join('')}
     <div class=" category-hub flex-container">
    <div class="category-block">
+   <a href="https://www.youweekly.gr/articles-timeline" target="_blank">
       <div class="category-container">
         <div class="hypatia-sans-font">TOP STORIES</div>
         <div class="dancing-script-font">
@@ -513,11 +518,13 @@ footer p{
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons2.png">
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons3.png">
         </div>
-        <button><a href="https://www.youweekly.gr/articles-timeline" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
+        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
       </div>
+    </a>
     </div>
 
     <div class="category-block">
+    <a href="https://www.youweekly.gr/fashion" target="_blank">
       <div class="category-container">
         <div class="hypatia-sans-font">ΜΟΔΑ</div>
         <div class="dancing-script-font">all about fashion</div>
@@ -526,11 +533,13 @@ footer p{
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-2.png">
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-3.png">
         </div>
-        <button><a href="https://www.youweekly.gr/fashion" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
+        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
       </div>
+    </a>
     </div>
 
     <div class="category-block">
+      <a href="https://www.youweekly.gr/beauty" target="_blank">
       <div class="category-container">
         <div class="hypatia-sans-font">ΟΜΟΡΦΙΑ</div>
         <div class="dancing-script-font">
@@ -541,11 +550,13 @@ footer p{
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons2.png">
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons3.png">
         </div>
-        <button><a href="https://www.youweekly.gr/beauty" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
+        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
       </div>
+      </a>
     </div>
 
     <div class="category-block">
+      <a href="https://www.youweekly.gr/family" target="_blank">
       <div class="category-container">
         <div class="hypatia-sans-font">ΟΙΚΟΓΕΝΕΙΑ</div>
         <div class="dancing-script-font">all about family</div>
@@ -554,8 +565,9 @@ footer p{
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons2.png">
           <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons3.png">
         </div>
-        <button ><a href="https://www.youweekly.gr/family" target="_blank">ΠΕΡΙΣΣΟΤΕΡΑ</a></button>
+        <button >ΠΕΡΙΣΣΟΤΕΡΑ</button>
       </div>
+      </a>
     </div>
   </div>
   <footer>
@@ -575,7 +587,7 @@ footer p{
     // console.log(items);
     const util = require('util');
     console.log(util.inspect(items[49].content, { depth: null, colors: true }));
-   
+    console.log (items);
 
   const htmlContent = await generateHTML(items);
   // Optional: Save the generated HTML to a file
