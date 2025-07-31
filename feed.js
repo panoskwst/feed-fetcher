@@ -55,17 +55,14 @@ function getDescription(item) {
 
 async function generateHTML(items) {
     const featureItem = items[0];
-    const flexItems = items.slice(1,4);
-    const gridItems = items.slice(4,6);
+    // const flexItems = items.slice(1,4);
+    const gridItems = items.slice(1,3);
+    const endItem =items[3];
   let html = `
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://use.typekit.net/swn5wpk.css" as="style">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <style>
 
 .email-body {
@@ -98,14 +95,6 @@ async function generateHTML(items) {
 .feature-article{
   position: relative;
   width: 100%;
-}
-.flex-background::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  height: 2px;
-  width: 550px;
-  background-color: #C9184A;
 }
 .image-container{
   position: relative;
@@ -264,7 +253,7 @@ async function generateHTML(items) {
 
 .category-hub {
   background-color: #fff2f2;
-  height: 185px;
+  height: 100%;
   padding: 0 30;
   align-items: center;
 }
@@ -297,31 +286,6 @@ async function generateHTML(items) {
   margin-top: 10px;
 }
 
-.category-block:nth-child(1){
-  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/yellowStories.png');
-  background-size: cover;
-}
-
-.category-block:nth-child(2){
-  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/purpleFashion.png');
-  background-size: cover;
-}
-
-.category-block:nth-child(3){
-  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/pinkBeauty.png');
-  background-size: cover;
-}
-
-.category-block:nth-child(4){
-  background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/greenFamily.png');
-  background-size: cover;
-}
-.email-footer {
-  border-top: 7px #C9184A solid;
-  height:64px;
-  background-color: black;
-  margin: 0;
-}
 .flex-news-img img {
     width: 160px;
     height: 160px;
@@ -330,7 +294,6 @@ async function generateHTML(items) {
 .email-footer {
   color: #ffffff;
   border-top: 7px #C9184A solid;
-  height:64px;
   background-color: #000000;
   margin: 0;
 }
@@ -494,24 +457,6 @@ align-items: center;
     </div>
     <div class="border" style="height: 2px; background-color: #C9184A; width:100%;" ></div>
   </div>
-
-    <div class="flex-container flex-background">
-    ${flexItems
-      .map((item, index) => `
-        <div class="flex-container-item hoverfun" style="width:25%; display: inline-block; margin: 0 20px;">
-          <div class="category"> ${Array.isArray(item.category) ? item.category[0] : item.category || 'NEWS'}</div>
-          <div class="numbering">0${index + 1}</div>
-          <div class="article-title" style="color:#000000;">${item.title}</div>
-          <div class="article-excerpt" style="color:#000000;">${item.description || ''}</div>
-          <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
-          <div class="flex-news-img">
-            <img src="${getImageFromItem(item)}">
-          </div>
-        </div>
-      `)
-      .join('')}
-      </div>
-
       ${gridItems
         .map(item =>`
             <div class="article article-grid">
@@ -530,100 +475,71 @@ align-items: center;
             <div class="border" style="height: 2px; background-color: #C9184A; width:100%;" ></div>
         `)
           .join('')}
-    <div class=" category-hub flex-container">
-   <div class="category-block" style="background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/yellowStories.png'); background-size: cover;">
-   <a href="https://www.youweekly.gr/articles-timeline" style="text-decoration: none;" target="_blank">
-      <div class="category-container">
-        <div class="hypatia-sans-font">TOP STORIES</div>
-        <div class="dancing-script-font">
-          all about news
-        </div>
-        <div class="category-hub-img">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons1.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons2.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/news-icons3.png">
-        </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
-      </div>
+
+  <div class="feature-article">
+    <div class="image-container">
+      <img src="${getImageFromItem(endItem)}" alt="img">
+    </div>
+    <div class="feature-article-excerpt" style="color:#000000;">
+    <div class="category"> ${Array.isArray(endItem.category) ? endItem.category[0] : endItem.category || 'NEWS'}</div>
+      <b>${endItem.title}</b>
+      ${endItem.description}
+      <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${featureItem.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
+    </div>
+    <div class="border" style="height: 2px; background-color: #C9184A; width:100%;" ></div>
+  </div>
+
+  <div class=" category-hub">
+    <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
+    <a href="https://www.youweekly.gr/articles-timeline" style="text-decoration: none;" target="_blank">
+      <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/top-stories.png" alt="top-stories">
     </a>
     </div>
 
-    <div class="category-block" style="background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/purpleFashion.png');
-  background-size: cover;">
+    <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
     <a href="https://www.youweekly.gr/fashion" style="text-decoration: none;" target="_blank">
-      <div class="category-container">
-        <div class="hypatia-sans-font">ΜΟΔΑ</div>
-        <div class="dancing-script-font">all about fashion</div>
-        <div class="category-hub-img">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-1.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-2.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion-icons-3.png">
-        </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
-      </div>
+      <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion.png" alt="fashion">
     </a>
     </div>
 
-    <div class="category-block" style="background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/pinkBeauty.png');
-  background-size: cover;">
+    <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
       <a href="https://www.youweekly.gr/beauty" style="text-decoration: none;" target="_blank">
-      <div class="category-container">
-        <div class="hypatia-sans-font">ΟΜΟΡΦΙΑ</div>
-        <div class="dancing-script-font">
-          all about beauty
-        </div>
-        <div class="category-hub-img">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons1.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons2.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty-icons3.png">
-        </div>
-        <button>ΠΕΡΙΣΣΟΤΕΡΑ</button>
-      </div>
+        <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty.png" alt="beauty">
       </a>
     </div>
 
-    <div class="category-block" style="background-image: url('https://www.youweekly.gr/wp-content/uploads/2025/07/greenFamily.png');
-  background-size: cover;">
+    <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
       <a href="https://www.youweekly.gr/family" style="text-decoration: none;" target="_blank">
-      <div class="category-container">
-        <div class="hypatia-sans-font">ΟΙΚΟΓΕΝΕΙΑ</div>
-        <div class="dancing-script-font">all about family</div>
-        <div class="category-hub-img">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons1.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons2.png">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family-icons3.png">
-        </div>
-        <button >ΠΕΡΙΣΣΟΤΕΡΑ</button>
-      </div>
+        <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family.png" alt="family">
       </a>
     </div>
   </div>
-  <div class="email-footer">
+    <div class="email-footer">
     <div class="footer-container">
       <div class="footer-logo">
         <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" alt="YOUWEEKLY">
       </div>
       <div class="footer-social-icons">
         <span>FOLLOW US</span>
-         <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
-          <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="8.65" height="18.764" viewBox="0 0 8.65 18.764"><path d="M.144.162H-2.421v9.4H-6.309V.162H-8.158v-3.3h1.849V-5.279A3.645,3.645,0,0,1-2.387-9.2L.492-9.19v3.207H-1.6a.792.792,0,0,0-.825.9v1.945H.485Z" transform="translate(8.158 9.202)"></path></svg>
+          <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/e8sax4txw5nmdr4lo9k.png" alt="facebook">
         </a>
         <a href="https://www.youtube.com/channel/UCGL_s2a9wNG0j_TJY4hmBTQ" style="text-decoration: none;" target="_blank" aria-label="YouTube channel">
-          <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="21.653" height="15.09" viewBox="0 0 21.653 15.09"><path d="M.376.131A23.247,23.247,0,0,0,0-4.989,2.734,2.734,0,0,0-2.341-7.115a72.484,72.484,0,0,0-8.107-.3,72.53,72.53,0,0,0-8.108.3,2.73,2.73,0,0,0-2.339,2.126,23.124,23.124,0,0,0-.384,5.12A23.107,23.107,0,0,0-20.9,5.249a2.732,2.732,0,0,0,2.34,2.126,72.521,72.521,0,0,0,8.108.3,72.512,72.512,0,0,0,8.108-.3A2.735,2.735,0,0,0,0,5.249,23.169,23.169,0,0,0,.376.131M-6.361-.078c-2.3,1.194-4.581,2.376-6.882,3.568V-3.67c2.295,1.2,4.574,2.387,6.882,3.592" transform="translate(21.277 7.415)"></path></svg>
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/kzv3bvu676mdr3n2iv.png" alt="youtube">
         </a>
         <a href="https://twitter.com/YouWeekly_gr" target="_blank" style="text-decoration: none;" aria-label="Twitter page">
-          <svg fill="#fff" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="none" class="u01b__icon-home" width="18" height="18"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"></path></svg>
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/56bja49q5d7mdr3mu9j.png" alt="twitter">
         </a>
         <a href="https://www.instagram.com/youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="Instagram page">
-          <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20.353" height="20.353" viewBox="0 0 20.353 20.353"><path d="M.264,0H-9.821a5.14,5.14,0,0,0-5.134,5.134V15.219a5.14,5.14,0,0,0,5.134,5.134H.264A5.14,5.14,0,0,0,5.4,15.219V5.134A5.14,5.14,0,0,0,.264,0m2.92,15.219a2.923,2.923,0,0,1-2.92,2.92H-9.821a2.923,2.923,0,0,1-2.919-2.92V5.134A2.922,2.922,0,0,1-9.821,2.215H.264a2.923,2.923,0,0,1,2.92,2.919Z" transform="translate(14.955)"></path><path d="M.022.043A1.241,1.241,0,0,1-1.219-1.2,1.241,1.241,0,0,1,.022-2.438,1.242,1.242,0,0,1,1.262-1.2,1.242,1.242,0,0,1,.022.043" transform="translate(15.566 5.975)"></path><path d="M.091,0a5.242,5.242,0,0,0,0,10.484A5.242,5.242,0,0,0,.091,0m0,8.269a3.027,3.027,0,1,1,0-6.054,3.027,3.027,0,0,1,0,6.054" transform="translate(10.086 4.934)"></path></svg>
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/vqyftrraf4mdr3mjsn.png" alt="instagram">
         </a>
         <a href="https://www.tiktok.com/@youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="TikTok page">
-          <svg fill="#fff" width="20.353" height="20.353" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z"></path></svg>
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/dx15ybk2nqmdr3jcmv.png" alt="tiktok">
         </a>
       </div>
     </div>
   </div>
-</html>
+  </html>
   `;
   return html;
 }
