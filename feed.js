@@ -3,7 +3,7 @@ const fs = require('fs');
 const https = require('https');
 const xml2js = require('xml2js');
 
-const FEED_URL = 'https://www.youweekly.gr/feed';
+const FEED_URL = 'https://www.youweekly.gr/tags/newsletter/feed';
 
 async function fetchXMLFeed(url) {
   return new Promise((resolve, reject) => {
@@ -551,7 +551,7 @@ align-items: center;
 
     // console.log(items);
     const util = require('util');
-    console.log(util.inspect(items[49].content, { depth: null, colors: true }));
+    // console.log(util.inspect(items[49].content, { depth: null, colors: true }));
     console.log (items);
 
   const htmlContent = await generateHTML(items);
