@@ -484,7 +484,7 @@ align-items: center;
     <div class="category"> ${Array.isArray(endItem.category) ? endItem.category[0] : endItem.category || 'NEWS'}</div>
       <b>${endItem.title}</b><br>
       ${endItem.description}
-      <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${featureItem.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
+      <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${endItem.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
     </div>
     <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;" ></div>
   </div>
