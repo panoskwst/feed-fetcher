@@ -467,7 +467,6 @@ align-items: center;
                     <div class="category"> ${Array.isArray(item.category) ? item.category[0] : item.category || 'NEWS'}</div>
                     <div class="article-title" style="color:#000000;">${item.title}</div>
                     <div class="article-excerpt" style="color:#000000;">
-                    ${getDescription(item)}
                     <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
                     </div>
                 </div>
@@ -538,6 +537,7 @@ align-items: center;
         </a>
       </div>
     </div>
+  </div>
   </div>
   </html>
   `;
