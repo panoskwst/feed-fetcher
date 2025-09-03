@@ -485,7 +485,7 @@ align-items: center;
   </div>
 
   <div class="category-hub">
-    <table>
+    <table style="width: 100%">
       <tr>
         <td>
           <div class="category-block">
@@ -545,7 +545,7 @@ align-items: center;
   </div>
   <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;"></div>
   <div class="category-hub">
-    <table>
+    <table style="width: 100%">
       <tr>
         <td>
           <a href="https://www.youweekly.gr/you-deals" target="_blank">
@@ -574,27 +574,43 @@ align-items: center;
   </div>
   <div class="email-footer">
     <div class="footer-container">
-      <div class="footer-logo">
-        <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" alt="YOUWEEKLY">
-      </div>
-      <div class="footer-social-icons">
-        <span>FOLLOW US</span>
-        <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/facebook-dark-red.png" alt="facebook">
-        </a>
-        <a href="https://www.youtube.com/channel/UCGL_s2a9wNG0j_TJY4hmBTQ" style="text-decoration: none;" target="_blank" aria-label="YouTube channel">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/youtube-dark-red.png" alt="youtube">
-        </a>
-        <a href="https://twitter.com/YouWeekly_gr" target="_blank" style="text-decoration: none;" aria-label="Twitter page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/twitter-logo-dark-red.png" alt="twitter">
-        </a>
-        <a href="https://www.instagram.com/youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="Instagram page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/instagram-dark-red.png" alt="instagram">
-        </a>
-        <a href="https://www.tiktok.com/@youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="TikTok page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/tiktok-dark-red.png" alt="tiktok">
-        </a>
-      </div>
+      <table style="width: 100%">
+        <tr>
+          <td style="width: 100%">
+            <div class="footer-logo" style="max-width: 14.2%">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" alt="YOUWEEKLY">
+            </div>
+          </td>
+          <td>
+            <span>FOLLOW US</span>
+          </td>
+          <td>
+            <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/facebook-dark-red.png" alt="facebook">
+            </a>
+          </td>
+          <td>
+             <a href="https://www.youtube.com/channel/UCGL_s2a9wNG0j_TJY4hmBTQ" style="text-decoration: none;" target="_blank" aria-label="YouTube channel">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/youtube-dark-red.png" alt="youtube">
+            </a>
+          </td>
+          <td>
+            <a href="https://twitter.com/YouWeekly_gr" target="_blank" style="text-decoration: none;" aria-label="Twitter page">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/twitter-logo-dark-red.png" alt="twitter">
+            </a>
+          </td>
+          <td>
+            <a href="https://www.instagram.com/youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="Instagram page">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/instagram-dark-red.png" alt="instagram">
+            </a>
+          </td>
+          <td>
+            <a href="https://www.tiktok.com/@youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="TikTok page">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/tiktok-dark-red.png" alt="tiktok">
+            </a>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
