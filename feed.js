@@ -254,25 +254,25 @@ async function generateHTML(items) {
 .category-hub {
   background-color: #fff2f2;
   height: 100%;
-  padding: 0 30;
+  padding: 0 30px;
   align-items: center;
 }
-.category-hub-img{
-  height: 18px;
-  padding: 10px 25px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.category-hub table{
+width: 100%;
+}
+.category-hub td{
+  text-align: center;
+    padding: 10px;
 }
 
-.category-block{
+/*.category-block{
   text-align: center;
   justify-content: center;
   display: flex;
   align-items: center;
   width: 120px;
   height: 120px;
-}
+} */
 .category-block a{
   color: black;
 }
@@ -418,15 +418,11 @@ align-items: center;
   display: none;
  }
 
- .category-block{
+ /* .category-block{
   height: 167px;
   width: 167px;
   margin: 10px auto;
- }
-
- .category-hub{
-  height: 100%;
- }
+ } */
 }
 @media only screen and (max-width: 360px) {
   .content-container, .article, .feature-article-excerpt {
@@ -437,19 +433,19 @@ align-items: center;
   }
 }
 </style>
-      </head>
-      <div class="email-body">
-        <header>
-          <div class="header-container">
-              <img src="https://www.youweekly.gr/wp-content/uploads/2025/08/newsletter-header.jpg">
-          </div>
-        </header>
-        <div class="feature-article">
-            <div class="image-container">
-                <img src="${getImageFromItem(featureItem)}" alt="img">
-                <div class="img-text-container">ΑΠΟΚΛΕΙΣΤΙΚΟ</div>
-            </div>
-              <div class="feature-article-excerpt" style="color:#000000;">
+</head>
+<div class="email-body">
+  <header>
+    <div class="header-container">
+      <img src="https://www.youweekly.gr/wp-content/uploads/2025/08/newsletter-header.jpg">
+    </div>
+  </header>
+  <div class="feature-article">
+    <div class="image-container">
+      <img src="${getImageFromItem(featureItem)}" alt="img">
+      <div class="img-text-container">ΑΠΟΚΛΕΙΣΤΙΚΟ</div>
+    </div>
+    <div class="feature-article-excerpt" style="color:#000000;">
       <div class="category"> ${Array.isArray(featureItem.category) ? featureItem.category[0] : featureItem.category || 'NEWS'}</div>
       <b>${featureItem.title}</b><br>
       ${featureItem.description}
@@ -457,30 +453,30 @@ align-items: center;
     </div>
     <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;" ></div>
   </div>
-      ${gridItems
-        .map(item =>`
-            <div class="article article-grid">
-                <div class="article-img">
-                    <img src="${getImageFromItem(item)}">
-                </div>
-                <div class="secondary-content">
-                    <div class="category"> ${Array.isArray(item.category) ? item.category[0] : item.category || 'NEWS'}</div>
-                    <div class="article-title" style="color:#000000;">${item.title}</div>
-                    <div class="article-excerpt" style="color:#000000;">
-                    <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;" ></div>
-        `)
-          .join('')}
+  ${gridItems
+  .map(item =>`
+  <div class="article article-grid">
+    <div class="article-img">
+      <img src="${getImageFromItem(item)}">
+    </div>
+    <div class="secondary-content">
+      <div class="category"> ${Array.isArray(item.category) ? item.category[0] : item.category || 'NEWS'}</div>
+      <div class="article-title" style="color:#000000;">${item.title}</div>
+      <div class="article-excerpt" style="color:#000000;">
+        <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${item.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;" ></div>
+  `)
+  .join('')}
 
   <div class="feature-article">
     <div class="image-container">
       <img src="${getImageFromItem(endItem)}" alt="img">
     </div>
     <div class="feature-article-excerpt" style="color:#000000;">
-    <div class="category"> ${Array.isArray(endItem.category) ? endItem.category[0] : endItem.category || 'NEWS'}</div>
+      <div class="category"> ${Array.isArray(endItem.category) ? endItem.category[0] : endItem.category || 'NEWS'}</div>
       <b>${endItem.title}</b><br>
       ${endItem.description}
       <div class="read-more" style="font-weight: 600; color: white; background-color: #C9184A; transform: skewX(-10deg); max-width: fit-content; height: auto; text-align: center; padding-top: 8px; padding-right: 10px; padding-bottom: 8px; padding-left: 10px; margin: 20px 0 12px;"><a class="read-more-link" style="color: #fff; text-decoration: none;" href="${endItem.link}" target="_blank">ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ</a></div>
@@ -488,17 +484,51 @@ align-items: center;
     <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;" ></div>
   </div>
 
-  <div class=" category-hub">
-    <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
-    <a href="https://www.youweekly.gr/articles-timeline" style="text-decoration: none;" target="_blank">
-      <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/top-stories.png" alt="top-stories">
-    </a>
+  <div class="category-hub">
+    <table>
+      <tr>
+        <td>
+          <div class="category-block">
+            <a href="https://www.youweekly.gr/articles-timeline" style="text-decoration: none;" target="_blank">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/top-stories.png" alt="top-stories">
+            </a>
+          </div>
+        </td>
+        <td>
+          <div class="category-block">
+            <a href="https://www.youweekly.gr/fashion" style="text-decoration: none;" target="_blank">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion.png" alt="fashion">
+            </a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="category-block">
+            <a href="https://www.youweekly.gr/beauty" style="text-decoration: none;" target="_blank">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/beauty.png" alt="beauty">
+            </a>
+          </div>
+        </td>
+        <td>
+          <div class="category-block">
+            <a href="https://www.youweekly.gr/family" style="text-decoration: none;" target="_blank">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family.png" alt="family">
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <!--<div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
+      <a href="https://www.youweekly.gr/articles-timeline" style="text-decoration: none;" target="_blank">
+        <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/top-stories.png" alt="top-stories">
+      </a>
     </div>
 
     <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
-    <a href="https://www.youweekly.gr/fashion" style="text-decoration: none;" target="_blank">
-      <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion.png" alt="fashion">
-    </a>
+      <a href="https://www.youweekly.gr/fashion" style="text-decoration: none;" target="_blank">
+        <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/fashion.png" alt="fashion">
+      </a>
     </div>
 
     <div class="category-block"  style="width:35%; display: inline-block; margin: 10px 20px;">
@@ -511,35 +541,64 @@ align-items: center;
       <a href="https://www.youweekly.gr/family" style="text-decoration: none;" target="_blank">
         <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/family.png" alt="family">
       </a>
-    </div>
+    </div>-->
   </div>
-    <div class="email-footer">
+  <div class="border" style="height: 2px; background-color: #C9184A; width:100%; margin-bottom: 10px;"></div>
+  <div class="category-hub">
+    <table>
+      <tr>
+        <td>
+          <a href="https://www.youweekly.gr/you-deals" target="_blank">
+            <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/banner-YouWeeklyDeals-40.jpg" alt="YouWeelyDeals">
+          </a>
+        </td>
+        <td>
+          <a href="https://www.youweekly.gr/back-to-school-25" target="_blank">
+            <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/18_BACK-TO-SCHOOL-2025_banner-430.jpg" alt="afieroma">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="https://afieromata.youweekly.gr/summer-vibes-2025" target="_blank">
+            <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/17_SUMMER-VIBES-2025_banner-430.jpg" alt="afieroma">
+          </a>
+        </td>
+        <td>
+          <a href="https://afieromata.youweekly.gr/after-the-panelinies-2025" target="_blank">
+            <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/16_META-TIS-PANNELHNIES-2025_banner-119.jpg" alt="afieroma">
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="email-footer">
     <div class="footer-container">
       <div class="footer-logo">
         <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" alt="YOUWEEKLY">
       </div>
       <div class="footer-social-icons">
         <span>FOLLOW US</span>
-          <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/e8sax4txw5nmdr4lo9k.png" style="max-width: 9px; max-height:19px;" alt="facebook">
+        <a href="https://www.facebook.com/youweekly.gr/" style="text-decoration: none;" aria-label="Facebook page" target="_blank">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/facebook-dark-red.png" alt="facebook">
         </a>
         <a href="https://www.youtube.com/channel/UCGL_s2a9wNG0j_TJY4hmBTQ" style="text-decoration: none;" target="_blank" aria-label="YouTube channel">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/kzv3bvu676mdr3n2iv.png" style="max-width: 20px; max-height: 15px;" alt="youtube">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/youtube-dark-red.png" alt="youtube">
         </a>
         <a href="https://twitter.com/YouWeekly_gr" target="_blank" style="text-decoration: none;" aria-label="Twitter page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/56bja49q5d7mdr3mu9j.png" style="max-width: 18px; max-height: 18px;" alt="twitter">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/twitter-logo-dark-red.png" alt="twitter">
         </a>
         <a href="https://www.instagram.com/youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="Instagram page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/vqyftrraf4mdr3mjsn.png" style="max-width: 20px; max-height: 20px;" alt="instagram">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/instagram-dark-red.png" alt="instagram">
         </a>
         <a href="https://www.tiktok.com/@youweekly.gr/" target="_blank" style="text-decoration: none;" aria-label="TikTok page">
-          <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/dx15ybk2nqmdr3jcmv.png" style="max-width: 20px; max-height: 20px;" alt="tiktok">
+          <img src="https://www.youweekly.gr/wp-content/uploads/2025/09/tiktok-dark-red.png" alt="tiktok">
         </a>
       </div>
     </div>
   </div>
-  </div>
-  </html>
+</div>
+</html>
   `;
   return html;
 }
