@@ -576,9 +576,9 @@ align-items: center;
     <div class="footer-container">
       <table style="width: 100%">
         <tr>
-          <td style="width: 100%">
-            <div class="footer-logo" style="max-width: 14.2%">
-              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" alt="YOUWEEKLY">
+          <td>
+            <div class="footer-logo">
+              <img src="https://www.youweekly.gr/wp-content/uploads/2025/07/logo-you-weekly-white.png" width="112px" alt="YOUWEEKLY">
             </div>
           </td>
           <td>
